@@ -5,9 +5,9 @@ import { StockDetailsComponent } from './pages/stock-details/stock-details.compo
 import { TrackStockComponent } from './pages/track-stock/track-stock.component';
 
 const routes: Routes = [
-  { path: 'track-stock', component: TrackStockComponent },
+  { path: '', component: TrackStockComponent },
   { path: 'sentiment/:stockSymbol/:companyName', component: StockDetailsComponent },
-  { path: '', redirectTo: '/track-stock', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/track-stock', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent}
 ];
 
