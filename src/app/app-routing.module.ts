@@ -5,10 +5,10 @@ import { StockDetailsComponent } from './pages/stock-details/stock-details.compo
 import { TrackStockComponent } from './pages/track-stock/track-stock.component';
 
 const routes: Routes = [
-  { path: '', component: TrackStockComponent },
+  { path: '', redirectTo: '/index.html', pathMatch: 'full' },
+  { path: 'index.html', component: TrackStockComponent },
   { path: 'sentiment/:stockSymbol/:companyName', component: StockDetailsComponent },
-  //{ path: '', redirectTo: '/track-stock', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent}
+  { path: '**', component: TrackStockComponent}
 ];
 
 @NgModule({
