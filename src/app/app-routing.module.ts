@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/index.html', pathMatch: 'full' },
   { path: 'index.html', component: TrackStockComponent },
   { path: 'sentiment/:stockSymbol/:companyName', component: StockDetailsComponent },
-  { path: '**', component: TrackStockComponent}
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

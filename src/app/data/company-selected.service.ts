@@ -1,11 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { CompanyCurrentData } from './company-current-data';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompanySelectedService {
+export class CompanySelectedService implements OnDestroy {
 
   companySelected: CompanyCurrentData[] = [];
-  constructor() { }
+  constructor() {
+    console.log('CompanySelectedService created');
+    
+   }
+   ngOnDestroy() {
+    console.log('CompanySelectedService destroyed');
+   }
 }

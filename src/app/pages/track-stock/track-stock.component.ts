@@ -18,7 +18,7 @@ export class TrackStockComponent implements OnInit {
 
   userInput: UserInput = {...this.defaultUserInput};
   btnText: string = 'Track Stock';
-  //companyCurrentDataList: CompanyCurrentData[] = [];
+  companyCurrentDataList: CompanyCurrentData[] = localStorage.getItem('companySelected') ? JSON.parse(localStorage.getItem('companySelected') || '[]') : [];
   companyCurrentData: CompanyCurrentData = {
     c: 0,
     dp: 0,
@@ -27,14 +27,17 @@ export class TrackStockComponent implements OnInit {
     name: '',
     code: ''
   }
-  // getter of companyCurrentDataList
-  get companyCurrentDataList(): CompanyCurrentData[] {
-    return this.companySelectedService.companySelected;
-  }
-  // setter of companyCurrentDataList
-  set companyCurrentDataList(companyCurrentDataList: CompanyCurrentData[]) {
-    this.companySelectedService.companySelected = companyCurrentDataList;
-  }
+  // // getter of companyCurrentDataList
+  // get companyCurrentDataList(): CompanyCurrentData[] {
+  //   return this.companySelectedService.companySelected;
+  //   //return JSON.parse(localStorage.getItem('companySelected') || '[]');
+  // }
+  // // setter of companyCurrentDataList
+  // set companyCurrentDataList(companyCurrentDataList: CompanyCurrentData[]) {
+  //   console.log('companyCurrentDataList:', companyCurrentDataList);
+  //   this.companySelectedService.companySelected = companyCurrentDataList;
+  //   localStorage.setItem('companySelected', JSON.stringify(companyCurrentDataList));
+  // }
   constructor(private dataService: DataService, private companySelectedService: CompanySelectedService) {
   }
 
@@ -59,6 +62,7 @@ export class TrackStockComponent implements OnInit {
         //delete old data
         this.companyCurrentDataList = this.companyCurrentDataList.filter((item) => item.code !== this.companyCurrentData.code);
         this.companyCurrentDataList.splice(0,0,this.companyCurrentData);
+        localStorage.setItem('companySelected', JSON.stringify(this.companyCurrentDataList));
         this.userInput = {...this.defaultUserInput};
         //reset form
         form.resetForm();
